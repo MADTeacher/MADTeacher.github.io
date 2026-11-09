@@ -8,10 +8,10 @@ $outDir = Join-Path $root "assets"
 $photo = Join-Path $outDir "photo_src.jpg"
 $hasPhoto = Test-Path $photo
 
-$bg = [System.Drawing.Color]::FromArgb(14, 17, 22)
-$amber = [System.Drawing.Color]::FromArgb(242, 169, 59)
-$white = [System.Drawing.Color]::FromArgb(230, 237, 243)
-$muted = [System.Drawing.Color]::FromArgb(152, 162, 176)
+$bg = [System.Drawing.Color]::FromArgb(35, 42, 44) # --board темной темы, грифельная доска
+$accent = [System.Drawing.Color]::FromArgb(233, 141, 119) # --accent, красный мел
+$white = [System.Drawing.Color]::FromArgb(237, 241, 232) # --ink
+$muted = [System.Drawing.Color]::FromArgb(169, 183, 171) # --muted
 
 $center = New-Object System.Drawing.StringFormat
 $center.Alignment = [System.Drawing.StringAlignment]::Center
@@ -70,11 +70,11 @@ if ($hasPhoto) {
   $dstRect = New-Object System.Drawing.Rectangle(780, 0, 420, 631)
   $srcRect = New-Object System.Drawing.Rectangle(0, 0, $src.Width, $src.Height)
   $g.DrawImage($src, $dstRect, $srcRect, [System.Drawing.GraphicsUnit]::Pixel)
-  # янтарная линия, отделяющая фото от текста
-  $g.FillRectangle((New-Object System.Drawing.SolidBrush($amber)), 776, 0, 4, 630)
+  # линия --accent, отделяющая фото от текста
+  $g.FillRectangle((New-Object System.Drawing.SolidBrush($accent)), 776, 0, 4, 630)
 }
 
-$g.FillRectangle((New-Object System.Drawing.SolidBrush($amber)), 80, 150, 8, 330)
+$g.FillRectangle((New-Object System.Drawing.SolidBrush($accent)), 80, 150, 8, 330)
 
 $nameText = 'Станислав Чернышев'
 $nameSize = 62
@@ -91,8 +91,18 @@ $monoFont = New-Object System.Drawing.Font('Consolas', 26, [System.Drawing.FontS
 
 $g.DrawString($nameText, $nameFont, (New-Object System.Drawing.SolidBrush($white)), 112, 168)
 $g.DrawString('кандидат технических наук, доцент', $subFont, (New-Object System.Drawing.SolidBrush($muted)), 112, 286)
-$g.DrawString('книги по Dart, Go, Flutter и AI-агентам', $subFont, (New-Object System.Drawing.SolidBrush($muted)), 112, 330)
-$g.DrawString('MADTeacher', $monoFont, (New-Object System.Drawing.SolidBrush($amber)), 112, 400)
+$booksText = 'автор книг по Dart, Go, Flutter и harness-инженерии'
+$booksSize = 29
+$booksFont = New-Object System.Drawing.Font('Segoe UI', $booksSize, [System.Drawing.FontStyle]::Regular, [System.Drawing.GraphicsUnit]::Pixel)
+# автоподбор: строка не должна наезжать на фото (доступно 640px до янтарной линии)
+while (($g.MeasureString($booksText, $booksFont).Width -gt 640) -and ($booksSize -gt 22)) {
+  $booksSize -= 1
+  $booksFont.Dispose()
+  $booksFont = New-Object System.Drawing.Font('Segoe UI', $booksSize, [System.Drawing.FontStyle]::Regular, [System.Drawing.GraphicsUnit]::Pixel)
+}
+Write-Host "og books font: ${booksSize}px"
+$g.DrawString($booksText, $booksFont, (New-Object System.Drawing.SolidBrush($muted)), 112, 330)
+$g.DrawString('MADTeacher', $monoFont, (New-Object System.Drawing.SolidBrush($accent)), 112, 400)
 $g.Dispose()
 $bmp.Save((Join-Path $outDir 'og-image.png'), [System.Drawing.Imaging.ImageFormat]::Png)
 $bmp.Dispose()
@@ -104,7 +114,7 @@ $g.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::AntiAlias
 $g.TextRenderingHint = [System.Drawing.Text.TextRenderingHint]::AntiAliasGridFit
 $g.FillRectangle((New-Object System.Drawing.SolidBrush($bg)), 0, 0, 180, 180)
 $braceFont = New-Object System.Drawing.Font('Consolas', 84, [System.Drawing.FontStyle]::Bold, [System.Drawing.GraphicsUnit]::Pixel)
-$g.DrawString('{ }', $braceFont, (New-Object System.Drawing.SolidBrush($amber)), (New-Object System.Drawing.RectangleF(0, 0, 180, 180)), $center)
+$g.DrawString('{ }', $braceFont, (New-Object System.Drawing.SolidBrush($accent)), (New-Object System.Drawing.RectangleF(0, 0, 180, 180)), $center)
 $g.Dispose()
 $bmp.Save((Join-Path $outDir 'apple-touch-icon.png'), [System.Drawing.Imaging.ImageFormat]::Png)
 $bmp.Dispose()
@@ -116,7 +126,7 @@ $g.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::AntiAlias
 $g.TextRenderingHint = [System.Drawing.Text.TextRenderingHint]::ClearTypeGridFit
 $g.FillRectangle((New-Object System.Drawing.SolidBrush($bg)), 0, 0, 32, 32)
 $mFont = New-Object System.Drawing.Font('Consolas', 24, [System.Drawing.FontStyle]::Bold, [System.Drawing.GraphicsUnit]::Pixel)
-$g.DrawString('M', $mFont, (New-Object System.Drawing.SolidBrush($amber)), (New-Object System.Drawing.RectangleF(0, 0, 32, 32)), $center)
+$g.DrawString('M', $mFont, (New-Object System.Drawing.SolidBrush($accent)), (New-Object System.Drawing.RectangleF(0, 0, 32, 32)), $center)
 $g.Dispose()
 $bmp.Save((Join-Path $outDir 'favicon-32.png'), [System.Drawing.Imaging.ImageFormat]::Png)
 $bmp.Dispose()
