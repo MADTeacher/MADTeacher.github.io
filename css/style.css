@@ -203,6 +203,7 @@ section.zone { padding: 40px 0 30px; }
 .zone-head h2 {
   margin: 0; font-size: clamp(26px, 4vw, 38px);
   text-decoration: underline wavy var(--accent) 2.5px; text-underline-offset: 9px;
+  text-decoration-skip-ink: none; /* иначе волна рвётся на выносных «р» и «у» */
 }
 .zone-head .aside-note { margin-left: auto; }
 
@@ -293,6 +294,26 @@ section.zone { padding: 40px 0 30px; }
 .publist .pj { color: var(--muted); font-style: italic; font-size: 14.5px; }
 .publist a { color: var(--accent); text-decoration: underline dashed var(--accent) 1.5px; text-underline-offset: 4px; }
 .pub-all { margin-top: 22px; }
+
+/* Стикеры-микроаннотации к значимым статьям (первые четыре) */
+.publist li .pub-row { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+.publist li .pub-art { flex: 1 1 260px; min-width: 0; }
+.pub-note {
+  position: relative; flex: 0 1 210px; min-width: 180px;
+  padding: 14px 14px 12px; box-shadow: var(--shadow);
+  margin-top: 2px;
+}
+.pub-note.n-y { background: var(--note-y); transform: rotate(-1.6deg); }
+.pub-note.n-b { background: var(--note-b); transform: rotate(1.4deg); }
+.pub-note.n-p { background: var(--note-p); transform: rotate(-1.2deg); }
+.pub-note.n-g { background: var(--note-g); transform: rotate(1.2deg); }
+.pub-note-label {
+  display: block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; opacity: .65; margin-bottom: 4px;
+}
+.pub-note-text { display: block; font-size: 14px; line-height: 1.45; }
+.pub-note .tape { top: -11px; width: 86px; height: 22px; opacity: .92; box-shadow: 0 2px 5px rgba(0,0,0,.25); }
+@media (max-width: 480px) { .pub-note { min-width: 160px; } }
 
 /* Каналы */
 .chan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 26px 22px; }
