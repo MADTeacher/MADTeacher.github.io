@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Станислав Чернышев – книги, курсы, статьи, каналы</title>
+  <meta name="description" content="Станислав Чернышев (MADTeacher): кандидат технических наук, доцент, автор книг «Основы Dart», «Основы Go», «Основы Flutter». Книги, курсы на Stepik, научные статьи в журналах ВАК, Telegram, Boosty, YouTube.">
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (t !== 'dark' && t !== 'light') {
+        t = 'dark'; /* по умолчанию – грифельная доска */
+      }
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="assets/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:title" content="Станислав Чернышев – книги, курсы, статьи, каналы">
+  <meta property="og:description" content="Доцент и автор книг «Основы» по Dart, Go и Flutter. Пишу про harness-инженерию и учу тому, что нужно разработчикам прямо сейчас, а не десять лет назад.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://madteacher.github.io/">
+  <meta property="og:image" content="https://madteacher.github.io/assets/og-image.png">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://madteacher.github.io/">
+  <meta name="theme-color" content="#232a2c">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Станислав Чернышев",
+    "alternateName": "MADTeacher",
+    "jobTitle": "доцент, кандидат технических наук",
+    "description": "Автор книг по Dart, Go и Flutter, автор курсов на Stepik, научные статьи в журналах ВАК.",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Санкт-Петербургский государственный университет аэрокосмического приборостроения"
+    },
+    "url": "https://madteacher.github.io/",
+    "image": "https://madteacher.github.io/assets/og-image.png",
+    "sameAs": [
+      "https://t.me/madteacher_channel",
+      "https://www.youtube.com/channel/UCWTkSjlpms9Yo1EIby7aNbw",
+      "https://github.com/MADTeacher",
+      "https://boosty.to/madteacher",
+      "https://sponsr.ru/madteacher",
+      "https://elibrary.ru/author_items.asp?authorid=879983"
+    ]
+  }
+  </script>
+</head>
+<body id="top">
+
+  <header class="topbar">
+    <div class="wrap topbar-in">
+      <a class="brand" href="#top"><span class="mad">MAD<svg viewBox="0 0 120 60" preserveAspectRatio="none" aria-hidden="true"><path d="M62 8 C 24 4, 8 20, 11 31 C 14 47, 42 57, 66 55 C 98 52, 112 39, 108 25 C 104 11, 86 3, 50 7"/></svg></span>Teacher</a>
+      <nav class="nav">
+        <a href="#books">Книги</a>
+        <a href="#courses">Курсы</a>
+        <a href="#publications">Публикации</a>
+        <a href="#channels">Каналы</a>
+        <a class="tg" href="https://t.me/madteacher_channel">Telegram ↗</a>
+      </nav>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Переключить тему" title="Переключить тему">◐</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ГЕРОЙ -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>Станислав Чернышев</h1>
+          <p class="role hand">кандидат технических наук, доцент · <b>автор книг по AI, Dart, Go и Flutter</b></p>
+
+          <div class="bio">
+            <p class="greet hand">Всем привет!</p>
+            <p>Меня зовут Станислав Чернышев. Я автор учебной литературы по ИТ-тематике, тг-канала «MADTeacher», спикер конференций, участник ПК Crossconf и FlutterConf. Моя основная деятельность – <span class="hl">наука и преподавание</span>. Есть степень кандидата технических наук. Работаю на должности доцента в Санкт-Петербургском государственном университете аэрокосмического приборостроения.</p>
+            <p>За спиной более 10 лет в IT: работа в сфере ВПК, разработка различных проектов на заказ, управление командой разработчиков, <span class="hl">пару выгораний</span> и, само собой, преподавание. Мне нравится обучать, и, чего уж там скрывать – я просто в бешенстве от сложившейся ситуации в сфере образования…</p>
+            <p>Этот проект – один из маленьких шагов, в попытке изменить чашу весов таким образом, чтобы мои ученики и студенты выходили на рынок труда с актуальным набором компетенций. А также один из способов <span class="hl">поддержания преподских штанов</span>. Мной выбран другой путь – пилить востребованный контент, который будет полезен как бывалым, так и начинающим инженерам и используется на моих занятиях в ВУЗе.</p>
+            <p>Почему большая часть книг платная? Годы работы «за спасибо» научили ценить свой труд, к тому же имеется серия книг <span class="hl">«Community edition»</span>, доступ к которым предоставляется совершенно бесплатно.</p>
+          </div>
+        </div>
+
+        <div>
+          <figure class="photo-pin" style="margin-top:6px;">
+            <span class="tape"></span>
+            <div class="frame">
+              <img src="assets/portrait.jpg" alt="Станислав Чернышев" width="520" height="780">
+              <figcaption class="cap hand">это я, а не случайный препод из интернета</figcaption>
+            </div>
+          </figure>
+
+          <div class="support" title="Собрано 13 469 ₽ · осталось 11 300 000 ₽">
+            <span class="tape right"></span>
+            <h3 class="hand">Поддержать</h3>
+            <div class="support-links">
+              <a class="btn-hand" href="https://boosty.to/madteacher">Boosty ↗</a>
+              <a class="btn-hand" href="https://sponsr.ru/madteacher">Sponsr ↗</a>
+            </div>
+            <div class="mortgage-top hand">
+              <span class="sum">до свободы: 11 300 000 ₽</span>
+            </div>
+            <div class="mortgage-track"><div class="mortgage-fill"></div></div>
+            <p class="mortgage-note hand">Помоги быстрее закрыть ипотеку →</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- КНИГИ -->
+    <section class="zone" id="books">
+      <div class="zone-head">
+        <h2>Книги</h2>
+        <span class="aside-note scribble-note">
+          <svg width="34" height="26" viewBox="0 0 34 26" aria-hidden="true"><path d="M2 22 C 10 20, 24 14, 30 4 M26 6 L30 4 L29 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="hand">разложено на столе</span>
+        </span>
+      </div>
+
+      <!--
+        ШАБЛОН НОВОЙ КНИГИ – скопируйте <article class="sheet-card"> и заполните.
+        Обложку положить в assets/covers/src/<имя>.jpg, прогнать tools/resize-covers.ps1.
+        Отметку «в работе» ставить только пока книга пишется:
+        <span class="tag hand">в работе</span> сразу после скотча.
+      -->
+      <div class="desk">
+        <article class="sheet-card">
+          <span class="tape"></span>
+          <span class="tag hand">в работе</span>
+          <div class="cover"><img src="assets/covers/harness.jpg" alt="Обложка книги «Основы harness-инженерии»" width="480" height="520" loading="lazy"></div>
+          <h3>Основы harness-инженерии</h3>
+          <p>Как с нуля спроектировать свой агентский харнесс, какие проблемы и нюансы ждут на этом пути и лучшие практики</p>
+          <div class="chips">
+            <a class="chip" href="https://github.com/MADTeacher/madharness-mini">GitHub ↗</a>
+            <a class="chip" href="https://boosty.to/madteacher/posts/a4275d93-2000-401d-a536-e32fdf58d55a">Черновик на Boosty ↗</a>
+            <a class="chip" href="https://sponsr.ru/madteacher/189819">Черновик на Sponsr ↗</a>
+          </div>
+        </article>
+
+        <article class="sheet-card">
+          <span class="tape"></span>
+          <div class="cover"><img src="assets/covers/dart.jpg" alt="Обложка книги «Основы Dart»" width="444" height="630" loading="lazy"></div>
+          <h3>Основы Dart</h3>
+          <p>Бестселлер мира Dart на просторах РФ и СНГ. Бумажное издание – в «Питере», бесплатная Community-редакция и актуальная электронная версия – на Boosty</p>
+          <div class="chips">
+            <a class="chip" href="https://github.com/MADTeacher/dart_basics">GitHub ↗</a>
+            <a class="chip" href="https://boosty.to/madteacher/posts/927fe3a8-59ae-46fe-ace4-737a66e57a54">Community ↗</a>
+            <a class="chip" href="https://boosty.to/madteacher/posts/4dc87097-41c2-4cf8-bb95-09a6a1cf6020">Boosty ↗</a>
+            <a class="chip" href="https://www.piter.com/product/osnovy-dart">Купить в «Питере» ↗</a>
+            <a class="chip" href="https://stepik.org/a/186453">Курс на Stepik ↗</a>
+          </div>
+        </article>
+
+        <article class="sheet-card">
+          <span class="tape"></span>
+          <div class="cover"><img src="assets/covers/flutter.jpg" alt="Обложка книги «Основы Flutter»" width="248" height="350" loading="lazy"></div>
+          <h3>Основы Flutter</h3>
+          <p>Авторы: С. Чернышев (идейный вдохновитель и технический редактор), Ю. Петров, С. Ильин, П. Гершевич. Печатная книга – в «Питере», полная версия – с курсом на Stepik</p>
+          <div class="chips">
+            <a class="chip" href="https://github.com/MADTeacher/flutter_basics">GitHub ↗</a>
+            <a class="chip" href="https://www.piter.com/product/osnovy-flutter">Купить в «Питере» ↗</a>
+            <a class="chip" href="https://stepik.org/a/197817">Курс на Stepik ↗</a>
+          </div>
+        </article>
+
+        <article class="sheet-card">
+          <span class="tape"></span>
+          <div class="cover"><img src="assets/covers/go.jpg" alt="Обложка книги «Основы Go»" width="452" height="630" loading="lazy"></div>
+          <h3>Основы Go</h3>
+          <p>История создания языка, его синтаксис и основные нюансы, встроенные типы данных и т. д.</p>
+          <div class="chips">
+            <a class="chip" href="https://github.com/MADTeacher/go_basics">GitHub ↗</a>
+            <a class="chip" href="https://boosty.to/madteacher/posts/ae93a223-6458-4565-8e54-5d89d4335790">Community ↗</a>
+            <a class="chip" href="https://boosty.to/madteacher/posts/13ea22f4-e0a0-4949-bbe0-7ed0da854b1c">Boosty ↗</a>
+            <a class="chip" href="https://www.piter.com/product/osnovy-go">Купить в «Питере» ↗</a>
+            <a class="chip" href="https://stepik.org/a/236054">Курс на Stepik ↗</a>
+          </div>
+        </article>
+
+        <article class="sheet-card">
+          <span class="tape"></span>
+          <div class="cover"><img src="assets/covers/concurrency.jpg" alt="Обложка книги «Dart Concurrency»" width="443" height="630" loading="lazy"></div>
+          <h3>Dart Concurrency</h3>
+          <p>Асинхронность, изоляты, параллелизм и внутрянка DartVM</p>
+          <div class="chips">
+            <a class="chip" href="https://github.com/MADTeacher/dart_concurrency">GitHub ↗</a>
+            <a class="chip" href="https://boosty.to/madteacher/posts/49138b26-d231-49e9-83c7-c38666fe9602">Boosty ↗</a>
+            <a class="chip" href="https://stepik.org/a/248159">Курс на Stepik ↗</a>
+          </div>
+        </article>
+
+        <article class="sheet-card">
+          <span class="tape"></span>
+          <div class="cover"><img src="assets/covers/algodart.jpg" alt="Обложка книги «Алгоритмы и структуры данных на Dart»" width="463" height="630" loading="lazy"></div>
+          <h3>Алгоритмы и структуры данных на Dart</h3>
+          <p>Классические алгоритмы и структуры данных на Dart</p>
+          <div class="chips">
+            <a class="chip" href="https://github.com/MADTeacher/dart-algorithms-and-data-structures">GitHub ↗</a>
+            <a class="chip" href="https://boosty.to/madteacher/posts/665ac94c-69e0-4ecf-a645-79fbaf2838fd">Boosty ↗</a>
+            <a class="chip" href="https://stepik.org/a/255705">Курс на Stepik ↗</a>
+          </div>
+        </article>
+
+        <article class="sheet-card">
+          <span class="tape"></span>
+          <div class="cover"><img src="assets/covers/algogo.jpg" alt="Обложка книги «Алгоритмы и структуры данных на Go»" width="480" height="626" loading="lazy"></div>
+          <h3>Алгоритмы и структуры данных на Go</h3>
+          <p>Классические алгоритмы и структуры данных на Go</p>
+          <div class="chips">
+            <a class="chip" href="https://github.com/MADTeacher/go-algorithms-and-data-structures">GitHub ↗</a>
+            <a class="chip" href="https://boosty.to/madteacher/posts/73e370cf-180c-412f-a1d2-1b40e284033e">Boosty ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- КУРСЫ -->
+    <section class="zone" id="courses">
+      <div class="zone-head">
+        <h2>Курсы</h2>
+        <span class="aside-note hand muted">авторские, на Stepik</span>
+      </div>
+
+      <!--
+        ШАБЛОН НОВОГО КУРСА – стикер в «отдельных квестах», скопируйте <article class="sticky">
+        и заполните (описание из карточки курса на Stepik, без цены и числа учеников):
+        <article class="sticky y">
+          <span class="lvl">Тег</span>
+          <h3>Название курса</h3>
+          <p>Короткое описание</p>
+          <a href="https://stepik.org/a/000000">Stepik ↗</a>
+        </article>
+        Цвета стикеров: y – желтый, b – голубой, p – персиковый, g – зеленый.
+        Новый шаг в «пути джедая» – это <div class="path-step"> с <span class="lvl hand">шаг N</span>.
+      -->
+      <div class="path-wrap">
+        <div>
+          <p class="hand path-title">путь джедая Dart →</p>
+          <div class="path">
+            <div class="path-step">
+              <span class="lvl hand">шаг 1 · база</span>
+              <h3><a href="https://stepik.org/a/225020">Основы разработки на Dart: от юнлинга до падавана</a></h3>
+              <p>Программа курсов «Основы Dart» для сильной базы по языку: базовый синтаксис, продвинутые возможности и ограничения, несколько сквозных проектов</p>
+            </div>
+            <div class="path-step">
+              <span class="lvl hand">шаг 2</span>
+              <h3><a href="https://stepik.org/a/255705">Основы разработки на Dart: рыцарь-джедай</a></h3>
+              <p>Алгоритмы и структуры данных с реализацией на Dart, а также паттерны проектирования GoF</p>
+            </div>
+            <div class="path-step" style="padding-bottom:0;">
+              <span class="lvl hand">шаг 3 · финальный босс</span>
+              <h3><a href="https://stepik.org/a/248159">Основы разработки на Dart: магистр-джедай</a></h3>
+              <p>Конкурентное программирование на Dart: Future, Stream, Isolate. Электронная версия книги «Dart Concurrency»</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="hand path-title path-title-blue">отдельные квесты:</p>
+          <div class="stickies">
+            <article class="sticky y">
+              <span class="lvl">AI · в работе</span>
+              <h3>Основы harness-инженерии</h3>
+              <p>Электронная версия пишущейся книги. Разбираем, как устроена «упряжь» большой языковой модели и почему именно она определяет, насколько полезным получится агент. Курс пополняется по мере выхода новых глав</p>
+              <a href="https://stepik.org/a/295132">Stepik ↗</a>
+            </article>
+            <article class="sticky b">
+              <span class="lvl">Flutter</span>
+              <h3>Основы Flutter: путь от Новичка до Профи</h3>
+              <p>Практика, тесты и реальный проект – Тетрис, который прокачивается от версии v0 до полноценного приложения с анимацией, сетью и локализацией</p>
+              <a href="https://stepik.org/a/197817">Stepik ↗</a>
+            </article>
+            <article class="sticky p">
+              <span class="lvl">Go</span>
+              <h3>Основы Go</h3>
+              <p>Основы, структуры, интерфейсы и конкурентность на практике</p>
+              <a href="https://stepik.org/a/236054">Stepik ↗</a>
+            </article>
+            <article class="sticky g">
+              <p style="margin:0;">Каждый курс дублирует книгу практикой: тесты, задания и проекты. Учиться можно с нуля – путь расписан по шагам.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ПУБЛИКАЦИИ -->
+    <section class="zone" id="publications">
+      <div class="zone-head">
+        <h2>Научные публикации</h2>
+        <span class="aside-note hand muted">журналы ВАК</span>
+      </div>
+      <p class="pub-intro muted">Полный список с выходными данными – в <a href="https://elibrary.ru/author_items.asp?authorid=879983">профиле автора на eLibrary</a>.</p>
+
+      <!--
+        ШАБЛОН НОВОЙ СТАТЬИ – скопируйте <li> и заполните:
+        <li>
+          <span class="py">2025<svg viewBox="0 0 60 36" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="30" cy="18" rx="27" ry="14" transform="rotate(-3 30 18)"/></svg></span>
+          <span class="pt">Название статьи</span><br>
+          <span class="pj">Журнал</span> · <a href="ссылка на eLibrary или сайт журнала">eLibrary ↗</a>
+        </li>
+      -->
+      <ol class="publist">
+        <li>
+          <span class="py">2026<svg viewBox="0 0 60 36" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="30" cy="18" rx="27" ry="14" transform="rotate(-3 30 18)"/></svg></span>
+          <span class="pt">Использование больших языковых моделей для генерации программного кода: подходы к снижению недетерминизма</span><br>
+          <span class="pj">Программные продукты и системы</span> · <a href="https://elibrary.ru/item.asp?id=93510215">eLibrary ↗</a>
+        </li>
+        <li>
+          <span class="py">2026<svg viewBox="0 0 60 36" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="30" cy="18" rx="27" ry="14" transform="rotate(-3 30 18)"/></svg></span>
+          <span class="pt">Context Management in Agentic Software Engineering: A Lifecycle Model and Design Patterns</span><br>
+          <span class="pj">International Journal of Open Information Technologies</span> · <a href="https://injoit.org/index.php/j1/article/view/2655">INJOIT ↗</a>
+        </li>
+        <li>
+          <span class="py">2023<svg viewBox="0 0 60 36" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="30" cy="18" rx="27" ry="14" transform="rotate(-3 30 18)"/></svg></span>
+          <span class="pt">Проблемы мультиагентных систем и возможные пути их решения</span><br>
+          <span class="pj">Вестник Российского нового университета</span> · <a href="https://elibrary.ru/item.asp?id=54728629">eLibrary ↗</a>
+        </li>
+        <li>
+          <span class="py">2022<svg viewBox="0 0 60 36" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="30" cy="18" rx="27" ry="14" transform="rotate(-3 30 18)"/></svg></span>
+          <span class="pt">Классификация общих шаблонов проектирования мультиагентных систем</span><br>
+          <span class="pj">Программные продукты и системы</span> · <a href="https://elibrary.ru/item.asp?id=54261841">eLibrary ↗</a>
+        </li>
+        <li>
+          <span class="py">2022<svg viewBox="0 0 60 36" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="30" cy="18" rx="27" ry="14" transform="rotate(-3 30 18)"/></svg></span>
+          <span class="pt">Мультиагентная система поддержки принятия решений для минимизации стоимости группируемых товаров</span><br>
+          <span class="pj">Вестник Российского нового университета</span> · <a href="https://elibrary.ru/item.asp?id=50197299">eLibrary ↗</a>
+        </li>
+        <li>
+          <span class="py">2022<svg viewBox="0 0 60 36" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="30" cy="18" rx="27" ry="14" transform="rotate(-3 30 18)"/></svg></span>
+          <span class="pt">Фреймворк для создания мультиагентных систем</span><br>
+          <span class="pj">Вестник Российского нового университета</span> · <a href="https://elibrary.ru/item.asp?id=49056493">eLibrary ↗</a>
+        </li>
+        <li>
+          <span class="py">2022<svg viewBox="0 0 60 36" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="30" cy="18" rx="27" ry="14" transform="rotate(-3 30 18)"/></svg></span>
+          <span class="pt">Мультиагентная система формирования расписания в вузе</span><br>
+          <span class="pj">Вестник Российского нового университета</span> · <a href="https://elibrary.ru/item.asp?id=49056490">eLibrary ↗</a>
+        </li>
+      </ol>
+
+      <p class="pub-all"><a class="btn-hand" href="https://elibrary.ru/author_items.asp?authorid=879983">Все публикации на eLibrary ↗</a></p>
+    </section>
+
+    <!-- КАНАЛЫ -->
+    <section class="zone" id="channels">
+      <div class="zone-head">
+        <h2>Каналы</h2>
+        <span class="aside-note scribble-note">
+          <svg width="34" height="26" viewBox="0 0 34 26" aria-hidden="true"><path d="M2 22 C 10 20, 24 14, 30 4 M26 6 L30 4 L29 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="hand">стикеры на память</span>
+        </span>
+      </div>
+
+      <div class="chan-grid">
+        <a class="chan c1" href="https://t.me/madteacher_channel">
+          <span class="tape"></span>
+          <span class="lvl">главный</span>
+          <h3>Telegram</h3>
+          <p class="chandle">@madteacher_channel</p>
+          <p>Мысли по творящемуся в образовании, мире IT и dart/flutter. Анонсы стримов, созвонов сообщества и новости об обновлении книг</p>
+        </a>
+        <article class="chan c2">
+          <span class="tape"></span>
+          <span class="lvl">поддержка</span>
+          <p>Бесплатные книги серии Community Edition, ранний доступ к главам, закрытый чат, видео и способы поддержать мои преподавательские штаны =)</p>
+          <div class="chips">
+            <a class="chip" href="https://boosty.to/madteacher">Boosty ↗</a>
+            <a class="chip" href="https://sponsr.ru/madteacher">Sponsr ↗</a>
+          </div>
+        </article>
+        <a class="chan c3" href="https://www.youtube.com/channel/UCWTkSjlpms9Yo1EIby7aNbw">
+          <span class="tape"></span>
+          <span class="lvl">видео</span>
+          <h3>YouTube</h3>
+          <p class="chandle">Станислав [MADTeacher] Чернышев</p>
+          <p>190+ видео: уроки по Dart и Flutter, доклады с конференций, стримы и куда же без разговоров про ИИ</p>
+        </a>
+        <a class="chan c4" href="https://github.com/MADTeacher">
+          <span class="tape"></span>
+          <span class="lvl">код</span>
+          <h3>GitHub</h3>
+          <p class="chandle">github.com/MADTeacher</p>
+          <p>Мой GitHub-репозиторий</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bye">
+    <div class="wrap">
+      <p>© <span id="year">2026</span> Станислав Чернышев</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

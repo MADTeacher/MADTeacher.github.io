@@ -1,0 +1,5 @@
+Thumbs.db
+.DS_Store
+*.log
+# исходник портрета — тяжёлый, в публикацию не идёт (см. tools/make-og.ps1)
+assets/photo_src.jpg

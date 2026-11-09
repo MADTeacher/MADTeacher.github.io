@@ -1,0 +1,298 @@
+/* Дизайн «Доска учителя»: светлая тема – белая маркерная доска,
+   темная – грифельная. Цвета – только через переменные из :root[data-theme],
+   захардкоженный цвет ломает одну из тем. */
+
+/* ============ ТЕМЫ ============ */
+:root[data-theme="light"] {
+  --board: #fafaf6;
+  --paper: #ffffff;
+  --ink: #2e2d3a;
+  --muted: #6f6e7c;
+  --line: #2e2d3a;
+  --accent: #d2342b; /* красный маркер – им препод правит ошибки */
+  --blue: #2f6fd0;
+  --green: #1e9e62;
+  --hl: #ffe86e;
+  --note-y: #fff3a0;
+  --note-b: #cfe6ff;
+  --note-p: #ffd9ae;
+  --note-g: #d8f2d2;
+  --tape: #e7dcc2;
+  --shadow: 0 10px 22px rgba(46, 45, 58, .14);
+}
+:root[data-theme="dark"] {
+  --board: #232a2c;
+  --paper: #2b3336;
+  --ink: #edf1e8;
+  --muted: #a9b7ab;
+  --line: #d7ddd2;
+  --accent: #e98d77; /* красный мел на грифельной доске */
+  --blue: #8fb7f2;
+  --green: #93d6ae;
+  --hl: rgba(226, 200, 96, .32);
+  --note-y: #a29a58;
+  --note-b: #54718f;
+  --note-p: #96704e;
+  --note-g: #5f8560;
+  --tape: #756d58;
+  --shadow: 0 10px 22px rgba(0, 0, 0, .5);
+}
+
+/* ============ БАЗА ============ */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--board);
+  color: var(--ink);
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+  font-size: 16px; line-height: 1.6;
+}
+::selection { background: var(--accent); color: var(--board); }
+img { max-width: 100%; height: auto; }
+a:focus-visible, button:focus-visible {
+  outline: 2.5px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+.hand { font-family: 'Segoe Script', 'Comic Sans MS', cursive; }
+.muted { color: var(--muted); }
+
+/* Маркерные выделения */
+.hl {
+  background: linear-gradient(100deg, transparent 1%, var(--hl) 4%, var(--hl) 96%, transparent 99%);
+  padding: .08em .3em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  color: inherit;
+}
+
+/* Скотч */
+.tape {
+  position: absolute; top: -12px; left: 50%;
+  width: 96px; height: 26px;
+  background: var(--tape); opacity: .8;
+  transform: translateX(-50%) rotate(-3deg);
+  box-shadow: 0 2px 4px rgba(0,0,0,.15);
+}
+.tape.right { left: auto; right: 18%; transform: rotate(4deg); }
+
+/* Рукописная пометка со стрелкой */
+.scribble-note {
+  display: inline-flex; align-items: flex-start; gap: 6px;
+  font-size: 15px; color: var(--accent);
+}
+.scribble-note svg { flex: none; }
+
+/* ============ ШАПКА ============ */
+.topbar { padding: 18px 0 10px; border-bottom: 2px dashed var(--line); }
+.topbar-in { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.brand { text-decoration: none; color: var(--ink); font-weight: 700; font-size: 22px; position: relative; display: inline-block; }
+.brand .mad { position: relative; display: inline-block; color: var(--accent); }
+.brand .mad svg {
+  position: absolute; inset: -10px -14px;
+  width: calc(100% + 28px); height: calc(100% + 20px);
+  pointer-events: none;
+}
+.brand .mad path { fill: none; stroke: var(--accent); stroke-width: 3; opacity: .75; }
+.nav { display: flex; gap: 4px 18px; flex-wrap: wrap; margin-left: auto; align-items: center; }
+.nav a { color: var(--ink); text-decoration: underline dashed var(--muted) 1.5px; text-underline-offset: 5px; font-weight: 600; }
+.nav a:hover { color: var(--accent); }
+.nav .tg {
+  text-decoration: none; font-weight: 700;
+  border: 2px solid var(--line); padding: 6px 14px;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+.nav .tg:hover { background: var(--accent); color: var(--board); border-color: var(--accent); }
+.icon-btn {
+  appearance: none; background: transparent; color: var(--ink);
+  border: 2px solid var(--line); cursor: pointer;
+  width: 40px; height: 40px; font-size: 17px;
+  border-radius: 55% 45% 50% 50% / 45% 55% 50% 50%;
+}
+.icon-btn:hover { background: var(--accent); color: var(--board); }
+@media (max-width: 720px) { .nav { margin-left: 0; } }
+
+/* ============ ГЕРОЙ ============ */
+.hero { padding: 46px 0 36px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(250px, 1fr); gap: 48px; }
+@media (max-width: 880px) { .hero-grid { grid-template-columns: 1fr; } }
+
+.hero h1 { font-size: clamp(34px, 5.4vw, 56px); line-height: 1.08; margin: 0 0 6px; }
+.hero .role { font-size: 19px; color: var(--muted); margin: 0 0 26px; }
+.hero .role b { color: var(--accent); font-weight: 400; }
+
+.bio p { margin: 0 0 14px; }
+.bio .greet { font-size: 22px; }
+
+.photo-pin { position: relative; margin: 0 0 8px; transform: rotate(1.6deg); }
+.photo-pin .frame {
+  border: 2px solid var(--line); background: var(--paper);
+  padding: 10px 10px 14px; box-shadow: var(--shadow);
+  border-radius: 4px;
+}
+.photo-pin img { display: block; width: 100%; }
+.photo-pin .cap { text-align: center; font-size: 14px; color: var(--muted); padding-top: 8px; }
+
+/* Поддержка */
+.support {
+  position: relative;
+  background: var(--paper);
+  padding: 20px 22px 22px;
+  box-shadow: var(--shadow);
+  transform: rotate(-1.2deg);
+}
+.support h3 { margin: 0 0 12px; font-size: 20px; }
+.support-links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+.btn-hand {
+  display: inline-block; text-decoration: none; color: var(--ink);
+  border: 2px solid var(--line); padding: 7px 16px; font-weight: 700;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  background: var(--note-y);
+}
+.btn-hand:nth-child(2) { background: var(--note-b); }
+.btn-hand:hover { transform: rotate(-2deg) scale(1.04); }
+.mortgage-top { margin-bottom: 8px; }
+.mortgage-top .sum { white-space: nowrap; color: var(--accent); font-weight: 700; }
+.mortgage-track {
+  height: 22px;
+  border: 2.5px solid var(--line);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  background: var(--board);
+  overflow: hidden;
+}
+.mortgage-fill {
+  height: 100%; width: 2%; min-width: 12px;
+  background: var(--accent);
+  border-radius: 0 12px 12px 0;
+  transition: width .4s ease;
+}
+/* навел на Boosty или Sponsr – чуть подкинул в копилку */
+.support:has(.btn-hand:hover) .mortgage-fill { width: 7%; }
+.mortgage-note { font-size: 14px; color: var(--muted); margin-top: 8px; }
+
+/* ============ СЕКЦИИ ============ */
+section.zone { padding: 40px 0 30px; }
+.zone-head { display: flex; align-items: center; gap: 16px; margin-bottom: 30px; flex-wrap: wrap; }
+.zone-head h2 {
+  margin: 0; font-size: clamp(26px, 4vw, 38px);
+  text-decoration: underline wavy var(--accent) 2.5px; text-underline-offset: 9px;
+}
+.zone-head .aside-note { margin-left: auto; }
+
+/* Книги – разложено на столе */
+.desk { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 34px 28px; }
+.sheet-card {
+  position: relative;
+  background: var(--paper);
+  border: 2px solid var(--line);
+  box-shadow: var(--shadow);
+  padding: 20px 18px 18px;
+}
+.desk .sheet-card:nth-child(odd) { transform: rotate(-.8deg); }
+.desk .sheet-card:nth-child(even) { transform: rotate(.9deg); }
+.desk .sheet-card:hover { transform: rotate(0deg) translateY(-4px); }
+.sheet-card h3 { margin: 10px 0 8px; font-size: 18.5px; line-height: 1.25; }
+.sheet-card .tag { font-size: 13px; color: var(--accent); margin-bottom: 6px; display: inline-block; }
+.sheet-card p { margin: 0 0 12px; font-size: 14.5px; color: var(--muted); }
+.cover { border: 1px solid var(--line); margin-bottom: 4px; }
+.cover img { display: block; width: 100%; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  display: inline-block; text-decoration: none; color: var(--ink);
+  border: 1.5px solid var(--line); padding: 4px 10px; font-size: 13px;
+  border-radius: 225px 12px 205px 12px / 12px 205px 12px 225px;
+}
+.chip:hover { background: var(--hl); }
+
+/* Курсы – путь джедая */
+.path-wrap { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; }
+@media (max-width: 880px) { .path-wrap { grid-template-columns: 1fr; } }
+.path-title { color: var(--accent); font-size: 18px; margin: 0 0 18px; }
+.path-title-blue { color: var(--blue); }
+.path { position: relative; padding-left: 34px; }
+.path::before {
+  content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px;
+  border-left: 2.5px dashed var(--line);
+}
+.path-step { position: relative; padding: 0 0 26px; }
+.path-step::before {
+  content: ""; position: absolute; left: -31px; top: 6px;
+  width: 18px; height: 18px;
+  background: var(--paper); border: 2.5px solid var(--accent);
+  border-radius: 55% 45% 50% 50% / 45% 55% 50% 50%;
+}
+.path-step .lvl { font-size: 13px; color: var(--accent); }
+.path-step h3 { margin: 2px 0 6px; font-size: 19px; }
+.path-step h3 a { color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--hl); }
+.path-step h3 a:hover { background: var(--hl); }
+.path-step p { margin: 0 0 8px; font-size: 14.5px; color: var(--muted); }
+
+.stickies { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 22px 18px; align-content: start; }
+.sticky {
+  position: relative; padding: 18px 16px 16px;
+  box-shadow: var(--shadow);
+  min-height: 150px;
+}
+.sticky.y { background: var(--note-y); transform: rotate(-1.6deg); }
+.sticky.b { background: var(--note-b); transform: rotate(1.2deg); }
+.sticky.p { background: var(--note-p); transform: rotate(-.8deg); }
+.sticky.g { background: var(--note-g); transform: rotate(1.8deg); }
+.sticky h3 { margin: 4px 0 8px; font-size: 16.5px; line-height: 1.3; }
+.sticky p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink); opacity: .8; }
+.sticky .lvl { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; opacity: .65; }
+.sticky a { color: inherit; }
+
+/* Публикации */
+.pub-intro { margin: -14px 0 24px; }
+.pub-intro a { color: var(--accent); }
+.publist { list-style: none; margin: 0; padding: 0; }
+.publist li {
+  position: relative; padding: 12px 0 14px 64px;
+  border-bottom: 1.5px dashed var(--line);
+}
+.publist .py {
+  position: absolute; left: 0; top: 10px;
+  min-width: 46px; text-align: center;
+  font-family: 'Segoe Script', 'Comic Sans MS', cursive;
+  font-size: 16px; color: var(--accent);
+  padding: 2px 4px;
+}
+.publist .py svg {
+  position: absolute; inset: -7px -9px;
+  width: calc(100% + 18px); height: calc(100% + 14px);
+}
+.publist .py ellipse { fill: none; stroke: var(--blue); stroke-width: 2.2; opacity: .8; }
+.publist .pt { font-weight: 700; }
+.publist .pj { color: var(--muted); font-style: italic; font-size: 14.5px; }
+.publist a { color: var(--accent); text-decoration: underline dashed var(--accent) 1.5px; text-underline-offset: 4px; }
+.pub-all { margin-top: 22px; }
+
+/* Каналы */
+.chan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 26px 22px; }
+.chan {
+  position: relative; text-decoration: none; color: var(--ink);
+  padding: 20px 18px 18px; box-shadow: var(--shadow);
+  display: block;
+}
+.chan.c1 { background: var(--note-b); transform: rotate(-1.1deg); }
+.chan.c2 { background: var(--note-p); transform: rotate(1.4deg); }
+.chan.c3 { background: var(--note-y); transform: rotate(-1.8deg); }
+.chan.c4 { background: var(--note-g); transform: rotate(.9deg); }
+.chan:hover { transform: rotate(0) translateY(-4px); }
+.chan h3 { margin: 6px 0 2px; font-size: 20px; }
+.chan .chandle { font-size: 13.5px; opacity: .7; margin: 0 0 8px; }
+.chan p { margin: 0; font-size: 14px; opacity: .85; }
+.chan .lvl { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; opacity: .6; }
+.chan .chips { margin-top: 12px; }
+
+/* ============ ПОДВАЛ ============ */
+.bye { padding: 44px 0 60px; text-align: center; }
+.bye p { color: var(--muted); font-size: 14px; margin: 8px 0 0; }
+
+/* ============ Движение ============ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
