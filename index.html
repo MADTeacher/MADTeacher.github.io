@@ -92,7 +92,7 @@
           <figure class="photo-pin" style="margin-top:6px;">
             <span class="tape"></span>
             <div class="frame">
-              <img src="assets/portrait.jpg" alt="Станислав Чернышев" width="520" height="780">
+              <img src="assets/portrait.webp" alt="Станислав Чернышев" width="520" height="780" data-thumbhash="DwiGEwQPQ4+aaGhHf3b0ZgAAgoiCKDg=">
               <figcaption class="cap hand">это я, а не случайный препод из интернета</figcaption>
             </div>
           </figure>
@@ -126,15 +126,16 @@
 
       <!--
         ШАБЛОН НОВОЙ КНИГИ – скопируйте <article class="sheet-card"> и заполните.
-        Обложку положить в assets/covers/src/<имя>.jpg, прогнать tools/resize-covers.ps1.
-        Отметку «в работе» ставить только пока книга пишется:
+        Обложку положить в assets/covers/src/<имя>.jpg, прогнать tools/resize-covers.ps1:
+        он сделает assets/covers/<имя>.webp и напечатает data-thumbhash – вставить
+        строку в <img> обложки. Отметку «в работе» ставить только пока книга пишется:
         <span class="tag hand">в работе</span> сразу после скотча.
       -->
       <div class="desk">
         <article class="sheet-card">
           <span class="tape"></span>
           <span class="tag hand">в работе</span>
-          <div class="cover"><img src="assets/covers/harness.jpg" alt="Обложка книги «Основы harness-инженерии»" width="480" height="520" loading="lazy"></div>
+          <div class="cover"><img src="assets/covers/harness.webp" alt="Обложка книги «Основы harness-инженерии»" width="480" height="521" loading="lazy" data-thumbhash="68WRNQYPd3iFiH+It3eEf0f4AACBiIEYGA=="></div>
           <h3>Основы harness-инженерии</h3>
           <p>Как с нуля спроектировать свой агентский харнесс, какие проблемы и нюансы ждут на этом пути и лучшие практики</p>
           <div class="chips">
@@ -146,7 +147,7 @@
 
         <article class="sheet-card">
           <span class="tape"></span>
-          <div class="cover"><img src="assets/covers/dart.jpg" alt="Обложка книги «Основы Dart»" width="444" height="630" loading="lazy"></div>
+          <div class="cover"><img src="assets/covers/dart.webp" alt="Обложка книги «Основы Dart»" width="444" height="630" loading="lazy" data-thumbhash="GqWFDAIPQDd3d4d09tNHP40FACCIKIiCAg=="></div>
           <h3>Основы Dart</h3>
           <p>Бестселлер мира Dart на просторах РФ и СНГ. Бумажное издание – в «Питере», бесплатная Community-редакция и актуальная электронная версия – на Boosty</p>
           <div class="chips">
@@ -160,7 +161,7 @@
 
         <article class="sheet-card">
           <span class="tape"></span>
-          <div class="cover"><img src="assets/covers/flutter.jpg" alt="Обложка книги «Основы Flutter»" width="248" height="350" loading="lazy"></div>
+          <div class="cover"><img src="assets/covers/flutter.webp" alt="Обложка книги «Основы Flutter»" width="248" height="350" loading="lazy" data-thumbhash="3lSBDAIPSvdpp1aEkIA3CXcDACCIKIiCAg=="></div>
           <h3>Основы Flutter</h3>
           <p>Авторы: С. Чернышев (идейный вдохновитель и технический редактор), Ю. Петров, С. Ильин, П. Гершевич. Печатная книга – в «Питере», полная версия – с курсом на Stepik</p>
           <div class="chips">
@@ -172,7 +173,7 @@
 
         <article class="sheet-card">
           <span class="tape"></span>
-          <div class="cover"><img src="assets/covers/go.jpg" alt="Обложка книги «Основы Go»" width="248" height="351" loading="lazy"></div>
+          <div class="cover"><img src="assets/covers/go.webp" alt="Обложка книги «Основы Go»" width="248" height="351" loading="lazy" data-thumbhash="IHWBDAIPa/drRJJrc3A2B2cCACCIKIiCAg=="></div>
           <h3>Основы Go</h3>
           <p>История создания языка, его синтаксис и основные нюансы, встроенные типы данных и т. д.</p>
           <div class="chips">
@@ -186,7 +187,7 @@
 
         <article class="sheet-card">
           <span class="tape"></span>
-          <div class="cover"><img src="assets/covers/concurrency.jpg" alt="Обложка книги «Dart Concurrency»" width="443" height="630" loading="lazy"></div>
+          <div class="cover"><img src="assets/covers/concurrency.webp" alt="Обложка книги «Dart Concurrency»" width="443" height="630" loading="lazy" data-thumbhash="GqWFDAIPQDdnd4dz9tJHP40EACCIKIiCAg=="></div>
           <h3>Dart Concurrency</h3>
           <p>Асинхронность, изоляты, параллелизм и внутрянка DartVM</p>
           <div class="chips">
@@ -198,7 +199,7 @@
 
         <article class="sheet-card">
           <span class="tape"></span>
-          <div class="cover"><img src="assets/covers/algodart.jpg" alt="Обложка книги «Алгоритмы и структуры данных на Dart»" width="463" height="630" loading="lazy"></div>
+          <div class="cover"><img src="assets/covers/algodart.webp" alt="Обложка книги «Алгоритмы и структуры данных на Dart»" width="463" height="630" loading="lazy" data-thumbhash="GqWFDAIPQDd3h4d09sNXP4wFACCIKIiCAg=="></div>
           <h3>Алгоритмы и структуры данных на Dart</h3>
           <p>Классические алгоритмы и структуры данных на Dart</p>
           <div class="chips">
@@ -210,7 +211,7 @@
 
         <article class="sheet-card">
           <span class="tape"></span>
-          <div class="cover"><img src="assets/covers/algogo.jpg" alt="Обложка книги «Алгоритмы и структуры данных на Go»" width="480" height="626" loading="lazy"></div>
+          <div class="cover"><img src="assets/covers/algogo.webp" alt="Обложка книги «Алгоритмы и структуры данных на Go»" width="480" height="626" loading="lazy" data-thumbhash="5AeGDAIPkNmct4ohLoCqBYYIACCIKIiCAg=="></div>
           <h3>Алгоритмы и структуры данных на Go</h3>
           <p>Классические алгоритмы и структуры данных на Go</p>
           <div class="chips">
@@ -440,6 +441,7 @@
     </div>
   </footer>
 
+  <script src="js/vendor/thumbhash.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

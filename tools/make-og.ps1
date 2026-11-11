@@ -1,7 +1,8 @@
-﻿# Генерирует avatar.jpg, og-image.png (1200x630 с фото), apple-touch-icon.png, favicon-32.png
+﻿# Генерирует avatar.jpg, portrait.webp, og-image.png (1200x630 с фото),
+# apple-touch-icon.png, favicon-32.png
 # Вход: assets/photo_src.jpg (портрет 1706x2560, лицо ~x=940). Если его нет – og без фото.
 # Запуск: powershell -NoProfile -ExecutionPolicy Bypass -File tools\make-og.ps1
-Add-Type -AssemblyName System.Drawing
+. (Join-Path $PSScriptRoot 'webp-lib.ps1')
 
 $root = Split-Path $PSScriptRoot -Parent
 $outDir = Join-Path $root "assets"
@@ -45,7 +46,7 @@ if ($hasPhoto) {
   $bmp.Dispose()
 }
 
-# ---------- portrait.jpg: полное фото без кропа, 520px по ширине ----------
+# ---------- portrait.webp: полное фото без кропа, 520px по ширине ----------
 if ($hasPhoto) {
   $pw = 520
   $ph = [int]($src.Height * $pw / $src.Width)
@@ -54,7 +55,8 @@ if ($hasPhoto) {
   $g.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
   $g.DrawImage($src, (New-Object System.Drawing.Rectangle(0, 0, $pw, $ph)))
   $g.Dispose()
-  Save-Jpeg $bmp (Join-Path $outDir 'portrait.jpg') 86
+  Save-AsWebP $bmp (Join-Path $outDir 'portrait.webp') 86
+  Write-Host ("portrait thumbhash: " + (ConvertTo-ThumbHashB64 $bmp))
   $bmp.Dispose()
 }
 
@@ -132,4 +134,4 @@ $bmp.Save((Join-Path $outDir 'favicon-32.png'), [System.Drawing.Imaging.ImageFor
 $bmp.Dispose()
 
 if ($src) { $src.Dispose() }
-Write-Host 'OK: avatar.jpg, og-image.png, apple-touch-icon.png, favicon-32.png'
+Write-Host 'OK: avatar.jpg, portrait.webp, og-image.png, apple-touch-icon.png, favicon-32.png'

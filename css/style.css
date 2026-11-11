@@ -224,6 +224,8 @@ section.zone { padding: 40px 0 30px; }
 .sheet-card p { margin: 0 0 12px; font-size: 14.5px; color: var(--muted); }
 .cover { border: 1px solid var(--line); margin-bottom: 4px; }
 .cover img { display: block; width: 100%; }
+/* ThumbHash-заглушка: размытый фон у img, пока основная картинка грузится */
+.cover img, .photo-pin img { background-position: center; background-size: cover; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
   display: inline-block; text-decoration: none; color: var(--ink);

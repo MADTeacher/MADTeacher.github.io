@@ -1,19 +1,29 @@
-# Собирает контрольный лист из всех картинок каталога: подпись + миниатюра в ряд.
+﻿# Собирает контрольный лист из всех картинок каталога: подпись + миниатюра в ряд.
+# Понимает jpg/png и webp – последний декодирует во временный PNG внешней утилитой.
 # Запуск: powershell -NoProfile -ExecutionPolicy Bypass -File tools\montage.ps1 -SrcDir <dir> -Out <file.png>
 param(
   [Parameter(Mandatory = $true)][string]$SrcDir,
   [Parameter(Mandatory = $true)][string]$Out
 )
-Add-Type -AssemblyName System.Drawing
+. (Join-Path $PSScriptRoot 'webp-lib.ps1')
 
-$files = Get-ChildItem -Path $SrcDir | Where-Object { $_.Extension -match '^\.(jpe?g|png)$' } | Sort-Object Name
+$files = Get-ChildItem -Path $SrcDir | Where-Object { $_.Extension -match '^\.(jpe?g|png|webp)$' } | Sort-Object Name
 $thumbH = 300
 $gap = 12
 $labelH = 24
 
 $items = @()
+$streams = @() # MemoryStream-ы webp-картинок должны жить, пока живы загруженные из них Bitmap-ы
 foreach ($f in $files) {
-  $img = [System.Drawing.Image]::FromFile($f.FullName)
+  if ($f.Extension -eq '.webp') {
+    $tmpPng = ConvertFrom-WebPFile $f.FullName
+    $ms = New-Object System.IO.MemoryStream(, [System.IO.File]::ReadAllBytes($tmpPng))
+    Remove-Item $tmpPng
+    $img = [System.Drawing.Image]::FromStream($ms)
+    $streams += $ms
+  } else {
+    $img = [System.Drawing.Image]::FromFile($f.FullName)
+  }
   $w = [int]($img.Width * $thumbH / $img.Height)
   $items += @{ Img = $img; W = $w; Name = $f.BaseName }
 }
@@ -39,4 +49,5 @@ foreach ($it in $items) {
 $g.Dispose()
 $bmp.Save($Out, [System.Drawing.Imaging.ImageFormat]::Png)
 $bmp.Dispose()
+foreach ($ms in $streams) { $ms.Dispose() }
 Write-Host "OK: $Out ($($items.Count) items)"
